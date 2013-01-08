@@ -1,0 +1,102 @@
+// this is will be used in the table section
+client "admin"
+{
+ user "smack";
+ host "10.123.4.210";
+ //socket "/tmp/mysql.sock"; // this only applies to MySQL and is
+ port "3306";
+ db "newlaw";
+ pass "smack123";
+}
+
+// ensure the table exists and meets the conditions
+table "user_session"
+{
+  client "admin"; // connect with this client
+  create "CREATE TABLE `user_session` (
+    `session_id` char(32) NOT NULL,
+    `user_id` char(50) NOT NULL,
+    `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `topic_id` int(11) DEFAULT '0',
+    `individual_user_id` int(11) NOT NULL DEFAULT '0',
+    KEY `idx_uid` (`user_id`),
+    KEY `idx_time` (`timestamp`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=gbk";
+  min_rows "9"; // the table must have at least that many rows
+  data_file "user_session.dat"; // if the table is empty, load the data from
+}
+
+
+//define a dictionary
+dictionary "word"
+{
+  type "rand"; // words are retrieved in random order
+  source_type "file"; // words come from a file
+  source "user_session.dat"; // file location
+  delim ","; // take the part of the line before ,
+  file_size_equiv "45000"; // if the file is greater than this
+//divive the real file size by this value obtaining N and take every Nth
+//line skipping others
+}  
+
+dictionary "session_id"
+{
+    type "rand";
+    source_type "file";
+    source "/usr/share/smacks/data/session_id.dat";
+    delim ",";
+}
+
+//define a query
+query "select_by_username"
+{
+  //query "select * from user_session where user_id = '$word'";
+  query "SELECT `session_id`,`timestamp` FROM `user_session` WHERE `user_id` = '' and session_id='$session_id'";
+// $word will be substitute with the read from the 'word' dictionary
+  type "select_index";
+// query stats will be grouped by type
+  has_result_set "y";
+// the query is expected to return a result set
+  parsed "y";
+// the query string should be first processed by super-smack to do
+// dictionary substitution
+}
+
+
+// define database client type
+client "smacker"
+{
+ user "smack"; // connect as this user
+ pass "smack123"; // use this password
+ host "10.123.4.210"; // connect to this host
+ port "3306";
+ db "newlaw"; // switch to this database
+ //socket "/tmp/mysql.sock"; // this only applies to MySQL and is
+// ignored for PostgreSQL
+ query_barrel "10 select_by_username"; // on each round,
+// run select_by_username query followed by update_by_username
+}
+
+main
+ {
+
+  smacker.init(); // initialize the clients
+  smacker.set_num_rounds($2); // second arg on the command line defines
+// the number of rounds for each client
+  smacker.set_num_rounds($2);
+  smacker.create_threads($1);
+// first argument on the command line defines how many client instances
+// to fork. Anything after this will be done once for each client until
+// you collect the threads
+  smacker.connect();
+// you must connect after you fork 
+  smacker.unload_query_barrel(); // for each client fire the query barrel
+// it will now do the number of rounds specified by set_num_rounds()
+// on each round, query_barrel of the client is executed
+
+  smacker.collect_threads();
+// the master thread waits for the children, each child reports the stats
+// the stats are printed
+  smacker.disconnect();
+// the children now disconnect and exit
+ }
