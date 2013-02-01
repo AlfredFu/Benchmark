@@ -1,0 +1,290 @@
+Error running query UPDATE `user_session` SET `timestamp` =NOW() ,`topic_id`=0, individual_user_id = 0 WHERE `user_id` = 'dtt_ip' and session_id='qlppb4i00v39lup7u3oguiea21':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query UPDATE `user_session` SET `timestamp` =NOW() ,`topic_id`=0, individual_user_id = 0 WHERE `user_id` = 'kpmg-sh' and session_id='kq67l8mjod9nm45kgnk9d5lfb7':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query UPDATE `user_session` SET `timestamp` =NOW() ,`topic_id`=0, individual_user_id = 0 WHERE `user_id` = 'eye' and session_id='l6sk4j136tmmeucebtqal2mv63':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query update article_usage_mapping set customer_usage=customer_usage+1 where tid='367054' and table_name='tax':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 851970 errno = 22, error is Invalid argument
+Query Barrel Report for client smacker1
+connect: max=0ms  min=-1ms avg= 3ms from 1 clients 
+Query_type	num_queries	max_time	min_time	q_per_s
+delete_user_session	10000	4	4	26.83
+log_usage	10000	8	8	26.83
+select_tax	10000	4	4	26.83
+select_user_session	10000	4	4	26.83
+update_usage	10000	3	3	26.83
+update_user_session	10000	3	3	26.83
+14.38user 18.03system 6:12.81elapsed 8%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (1major+6938minor)pagefaults 0swaps
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Error running query update article_usage_mapping set customer_usage=customer_usage+1 where tid='231290' and table_name='tax':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query UPDATE `user_session` SET `timestamp` =NOW() ,`topic_id`=0, individual_user_id = 0 WHERE `user_id` = 'kpmg-sh' and session_id='hpm0i9u5nlb4i6pqgs06san2k2':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query UPDATE `user_session` SET `timestamp` =NOW() ,`topic_id`=0, individual_user_id = 0 WHERE `user_id` = 'dtt_ip' and session_id='q56v8g2i86fear46h5od7prl36':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query INSERT INTO `content_history` SET `title` = '???????????(2009?)', `user` = 'Public user', `lawid` = 40283, `taxonomy` = '7252', `provider_cd` = 'LNC', `content_type` = 'cont', `action_type` = 'v', `format` = 'html', `provider_id` = 1, `origin_id` = '40283', `isEnglish` = 'N', `ip` = '10.123.4.211', `time` = NOW(), `profile_id` = 0:Lost connection to MySQL server during query
+super-smack: aborting on failed query
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 884738 errno = 22, error is Invalid argument
+Query Barrel Report for client smacker1
+connect: max=0ms  min=-1ms avg= 18ms from 1 clients 
+Query_type	num_queries	max_time	min_time	q_per_s
+delete_user_session	10000	2	2	24.82
+log_usage	10000	2	2	24.82
+select_tax	10000	2	2	24.82
+select_user_session	10000	2	2	24.82
+update_usage	10000	2	2	24.82
+update_user_session	10000	2	2	24.82
+14.67user 18.65system 6:42.94elapsed 8%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (0major+6974minor)pagefaults 0swaps
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Query Barrel Report for client smacker1
+connect: max=5ms  min=0ms avg= 1ms from 30 clients 
+Query_type	num_queries	max_time	min_time	q_per_s
+delete_user_session	300000	11	0	1348.32
+log_usage	300000	13	0	1348.32
+select_tax	300000	0	0	1348.32
+select_user_session	300000	98	0	1348.32
+update_usage	300000	55	0	1348.32
+update_user_session	300000	46	0	1348.32
+15.51user 17.80system 3:42.60elapsed 14%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (0major+6719minor)pagefaults 0swaps
+
+
+
+
+
+
+
+
+
+Query Barrel Report for client smacker1
+connect: max=5ms  min=0ms avg= 1ms from 30 clients 
+Query_type	num_queries	max_time	min_time	q_per_s
+delete_user_session	300000	1	0	1401.53
+log_usage	300000	17	0	1401.53
+select_tax	300000	0	0	1401.53
+select_user_session	300000	1	0	1401.53
+update_usage	300000	13	0	1401.53
+update_user_session	300000	0	0	1401.53
+15.44user 17.73system 3:34.17elapsed 15%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (0major+6718minor)pagefaults 0swaps
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Error running query UPDATE `user_session` SET `timestamp` =NOW() ,`topic_id`=0, individual_user_id = 0 WHERE `user_id` = 'moseschan' and session_id='db7a76212290a99d4f98ea4388527ed7':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+0.08user 0.00system 0:00.21elapsed 41%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (1major+986minor)pagefaults 0swaps
+Error running query INSERT INTO `content_history` SET `title` = '???????????(2009?)', `user` = 'Public user', `lawid` = 40283, `taxonomy` = '7252', `provider_cd` = 'LNC', `content_type` = 'cont', `action_type` = 'v', `format` = 'html', `provider_id` = 1, `origin_id` = '40283', `isEnglish` = 'N', `ip` = '10.123.4.211', `time` = NOW(), `profile_id` = 0:Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query DELETE FROM user_session WHERE timestamp< NOW()-3600  AND topic_id>0:Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query UPDATE `user_session` SET `timestamp` =NOW() ,`topic_id`=0, individual_user_id = 0 WHERE `user_id` = 'junhe' and session_id='vtj32l9kkh4lfamvcjb7pnhad4':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query DELETE FROM user_session WHERE timestamp< NOW()-3600  AND topic_id>0:Lost connection to MySQL server during queryError running query 
+DELETE FROM user_session WHERE timestamp< NOW()-3600  AND topic_id>0:super-smack: aborting on failed query
+Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query UPDATE `user_session` SET `timestamp` =NOW() ,`topic_id`=0, individual_user_id = 0 WHERE `user_id` = 'bakertilly07' and session_id='kq67l8mjod9nm45kgnk9d5lfb7':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query UPDATE `user_session` SET `timestamp` =NOW() ,`topic_id`=0, individual_user_id = 0 WHERE `user_id` = 'jtnfaip' and session_id='tnkpn6cjamq3r4jof7dradiqe6':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query UPDATE `user_session` SET `timestamp` =NOW() ,`topic_id`=0, individual_user_id = 0 WHERE `user_id` = 'gitichina' and session_id='3h3d1k278vh34gk7g18t7kac03':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query UPDATE `user_session` SET `timestamp` =NOW() ,`topic_id`=0, individual_user_id = 0 WHERE `user_id` = 'chinaamway' and session_id='7jf2l14t00mbj6925r1gkft5l5':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+super-smack: Could not lock the pipe semaphore 917506 errno = 22, error is Invalid argument
+Error running query DELETE FROM user_session WHERE timestamp< NOW()-3600  AND topic_id>0:Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query UPDATE `user_session` SET `timestamp` =NOW() ,`topic_id`=0, individual_user_id = 0 WHERE `user_id` = 'hxgd001' and session_id='tp5aem49hj4lmdqis519voab73':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query INSERT INTO `content_history` SET `title` = '???????????(2009?)', `user` = 'Public user', `lawid` = 40283, `taxonomy` = '7252', `provider_cd` = 'LNC', `content_type` = 'cont', `action_type` = 'v', `format` = 'html', `provider_id` = 1, `origin_id` = '40283', `isEnglish` = 'N', `ip` = '10.123.4.211', `time` = NOW(), `profile_id` = 0:Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query INSERT INTO `content_history` SET `title` = '???????????(2009?)', `user` = 'Public user', `lawid` = 40283, `taxonomy` = '7252', `provider_cd` = 'LNC', `content_type` = 'cont', `action_type` = 'v', `format` = 'html', `provider_id` = 1, `origin_id` = '40283', `isEnglish` = 'N', `ip` = '10.123.4.211', `time` = NOW(), `profile_id` = 0:Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query update article_usage_mapping set customer_usage=customer_usage+1 where tid='1412654' and table_name='tax':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query INSERT INTO `content_history` SET `title` = '???????????(2009?)', `user` = 'Public user', `lawid` = 40283, `taxonomy` = '7252', `provider_cd` = 'LNC', `content_type` = 'cont', `action_type` = 'v', `format` = 'html', `provider_id` = 1, `origin_id` = '40283', `isEnglish` = 'N', `ip` = '10.123.4.211', `time` = NOW(), `profile_id` = 0:Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query update article_usage_mapping set customer_usage=customer_usage+1 where tid='31034' and table_name='tax':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query update article_usage_mapping set customer_usage=customer_usage+1 where tid='1162054' and table_name='tax':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query UPDATE `user_session` SET `timestamp` =NOW() ,`topic_id`=0, individual_user_id = 0 WHERE `user_id` = 'bjrta3' and session_id='v4gk2g4328vr78igsp97e26102':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query UPDATE `user_session` SET `timestamp` =NOW() ,`topic_id`=0, individual_user_id = 0 WHERE `user_id` = 'dtt_ip' and session_id='qvg493q392lm624jk4bq42rr52':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+0.08user 0.00system 0:00.17elapsed 51%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (0major+999minor)pagefaults 0swaps
+Error running query INSERT INTO `content_history` SET `title` = '???????????(2009?)', `user` = 'Public user', `lawid` = 40283, `taxonomy` = '7252', `provider_cd` = 'LNC', `content_type` = 'cont', `action_type` = 'v', `format` = 'html', `provider_id` = 1, `origin_id` = '40283', `isEnglish` = 'N', `ip` = '10.123.4.211', `time` = NOW(), `profile_id` = 0:Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query update article_usage_mapping set customer_usage=customer_usage+1 where tid='272520' and table_name='tax':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query update article_usage_mapping set customer_usage=customer_usage+1 where tid='305097' and table_name='tax':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query UPDATE `user_session` SET `timestamp` =NOW() ,`topic_id`=0, individual_user_id = 0 WHERE `user_id` = 'eye' and session_id='16gnquu2b5tv4vtodhf95u0fi6':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query INSERT INTO `content_history` SET `title` = '???????????(2009?)', `user` = 'Public user', `lawid` = 40283, `taxonomy` = '7252', `provider_cd` = 'LNC', `content_type` = 'cont', `action_type` = 'v', `format` = 'html', `provider_id` = 1, `origin_id` = '40283', `isEnglish` = 'N', `ip` = '10.123.4.211', `time` = NOW(), `profile_id` = 0:Lost connection to MySQL server during query
+super-smack: aborting on failed query
+Error running query update article_usage_mapping set customer_usage=customer_usage+1 where tid='325279' and table_name='tax':Lost connection to MySQL server during query
+super-smack: aborting on failed query
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------Amoeba----------------------------------------
+Command terminated by signal 2
+0.08user 0.00system 2:53.47elapsed 0%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (0major+565minor)pagefaults 0swaps

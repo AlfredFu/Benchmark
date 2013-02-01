@@ -2,10 +2,10 @@
 client "admin"
 {
  user "smack";
- host "localhost";
- socket "/var/run/mysqld/mysqld.sock"; // this only applies to MySQL and is
- //port "3306";
- db "newlaw_stg";
+ host "10.123.4.210";
+ //socket "/var/run/mysqld/mysqld.sock"; // this only applies to MySQL and is
+ port "3306";
+ db "newlaw";
  pass "smack123";
 }
 
@@ -23,7 +23,7 @@ table "user_session"
     KEY `idx_time` (`timestamp`)
   ) ENGINE=InnoDB DEFAULT CHARSET=gbk";
   min_rows "9"; // the table must have at least that many rows
-  data_file "/usr/local/super-smack/scripts/user_session.dat"; // if the table is empty, load the data from
+  data_file "/home/fred/workspace/Benchmark/mysql/smacks/data/user_session.dat"; // if the table is empty, load the data from
 }
 
 
@@ -32,7 +32,7 @@ dictionary "word"
 {
   type "rand"; // words are retrieved in random order
   source_type "file"; // words come from a file
-  source "/usr/local/super-smack/scripts/user_session.dat"; // file location
+  source "/home/fred/workspace/Benchmark/mysql/smacks/data/user_session.dat"; // file location
   delim ","; // take the part of the line before ,
   file_size_equiv "45000"; // if the file is greater than this
 //divive the real file size by this value obtaining N and take every Nth
@@ -74,10 +74,10 @@ client "smacker"
 {
  user "smack"; // connect as this user
  pass "smack123"; // use this password
- host "localhost"; // connect to this host
- //port "3306";
- db "newlaw_stg"; // switch to this database
- socket "/var/run/mysqld/mysqld.sock"; // this only applies to MySQL and is
+ host "10.123.4.210"; // connect to this host
+ port "3306";
+ db "newlaw"; // switch to this database
+ //socket "/var/run/mysqld/mysqld.sock"; // this only applies to MySQL and is
 // ignored for PostgreSQL
  query_barrel "10 update_by_user"; // on each round,
 // run select_by_username query followed by update_by_username

@@ -1,0 +1,229 @@
+// this is will be used in the table section
+client "admin"
+{
+ user "smack";
+ host "10.123.4.212";
+ db "newlaw";
+ pass "smack123";
+ port "3306";
+ //socket "/var/run/mysqld/mysqld.sock"; // this only applies to MySQL and is
+// ignored for PostgreSQL
+}
+
+// ensure the table exists and meets the conditions
+table "tax"
+{
+  client "admin"; // connect with this client
+ // if the table is not found or does not pass the checks, create it
+ // with the following, dropping the old one if needed
+  create "CREATE TABLE `tax` (
+  `taxid` int(11) NOT NULL AUTO_INCREMENT,
+  `title` text,
+  `querrydate` varchar(255) DEFAULT NULL,
+  `articleid` varchar(255) DEFAULT NULL,
+  `source` text,
+  `category` varchar(255) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `indbtime` datetime DEFAULT NULL,
+  `wordmatch` int(11) DEFAULT NULL,
+  `fromm` varchar(255) DEFAULT NULL,
+  `operator` varchar(20) DEFAULT NULL,
+  `tempornot` int(1) NOT NULL DEFAULT '1',
+  `countryed` varchar(40) DEFAULT NULL,
+  `countryed_1` tinyint(2) DEFAULT NULL,
+  `countryed_2` tinyint(2) DEFAULT NULL,
+  `visits` mediumint(8) NOT NULL DEFAULT '0',
+  `page` varchar(255) NOT NULL DEFAULT 'no',
+  `dir` varchar(255) DEFAULT NULL,
+  `head_note` text,
+  `ratifier_id` int(4) DEFAULT NULL,
+  `ratifier` varchar(100) DEFAULT NULL,
+  `ratifier_date` date DEFAULT NULL,
+  `effect_id` int(4) DEFAULT NULL,
+  `effect_date` date DEFAULT NULL,
+  `effect_status` varchar(50) DEFAULT NULL,
+  `effic_id` int(4) DEFAULT NULL,
+  `provider_code` varchar(50) DEFAULT NULL,
+  `provider_id` int(4) DEFAULT NULL,
+  `charnum` int(4) DEFAULT NULL,
+  `origin_id` varchar(255) DEFAULT NULL,
+  `expire_date` date DEFAULT NULL,
+  `isEnglish` enum('Y','N') DEFAULT 'N',
+  `ch_eng_counter_id` varchar(40) DEFAULT NULL,
+  `display` tinyint(1) NOT NULL DEFAULT '1',
+  `checkuser` varchar(50) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT '0',
+  `source_taxo` varchar(255) DEFAULT NULL,
+  `pic` varchar(255) DEFAULT NULL,
+  `time` datetime DEFAULT NULL,
+  `moreflag` varchar(255) DEFAULT NULL,
+  `linked` varchar(255) DEFAULT NULL,
+  `dblimit` varchar(255) DEFAULT NULL,
+  `tabled` varchar(255) DEFAULT NULL,
+  `format_flag` tinyint(1) DEFAULT '1',
+  `editedAt` datetime DEFAULT NULL,
+  `createdAt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `duplicate_flag` tinyint(1) NOT NULL DEFAULT '0',
+  `power_level` int(5) unsigned NOT NULL DEFAULT '0',
+  `taxonomy_id_list` varchar(255) NOT NULL DEFAULT '',
+  `sourceAt` int(5) NOT NULL DEFAULT '0',
+  `power_level_sort` int(5) DEFAULT NULL,
+  `keyword_list` varchar(255) NOT NULL DEFAULT '',
+  `alltype` varchar(255) DEFAULT NULL,
+  `industry_id_list` varchar(255) DEFAULT NULL,
+  `tags` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`taxid`),
+  KEY `idx_indbtime` (`indbtime`),
+  KEY `idx_checkusr` (`checkuser`),
+  KEY `idx_countryed` (`countryed`),
+  KEY `editedAt` (`editedAt`),
+  KEY `idx_effect_date` (`effect_date`),
+  KEY `idx_oid_pid_eng` (`origin_id`,`provider_id`,`isEnglish`)
+) ENGINE=MyISAM AUTO_INCREMENT=1494778 DEFAULT CHARSET=gbk";
+  min_rows "90"; // the table must have at least that many rows
+  data_file "/home/fred/workspace/Benchmark/mysql/smacks/data/words.dat"; // if the table is empty, load the data from
+//this file
+  gen_data_file "gen-data -n 90000 -f %12-12s%n,%25-25s,%n,%d";
+// if the file above does not exist, generate it with the above shell command
+// you can replace this command with anything that prints comma-delimited
+// data to stdout, just make sure you have the right number of columns
+}
+
+
+//define a dictionary
+dictionary "ch_eng_counter_id"
+{
+  type "rand"; // words are retrieved in random order
+  source_type "file"; // words come from a file
+  source "/home/fred/workspace/Benchmark/mysql/smacks/data/ch_eng_counter_id_new.dat"; // file location
+  delim ","; // take the part of the line before ,
+  file_size_equiv "45000"; // if the file is greater than this
+//divive the real file size by this value obtaining N and take every Nth
+//line skipping others. This is needed to be able to target a wide key
+// range without using up too much memory with test keys
+}  
+
+dictionary "taxid"
+{
+  type "rand"; // words are retrieved in random order
+  source_type "file"; // words come from a file
+  source "/home/fred/workspace/Benchmark/mysql/smacks/data/taxid.dat"; // file location
+  delim ","; // take the part of the line before ,
+  file_size_equiv "45000"; // if the file is greater than this
+}  
+
+dictionary "session_id"
+{
+    type "rand";
+    source_type "file";
+    source "/usr/share/smacks/data/session_id.dat";
+    delim ",";
+}
+
+dictionary "user_id"
+{
+    type "rand";
+    source_type "file";
+    source "/usr/share/smacks/data/user_id.dat";
+    delim ",";
+}
+
+query "select_user_session"
+{
+  query "SELECT `session_id`,`timestamp` FROM `user_session` WHERE `user_id` = '' and session_id='$session_id'";
+    type "select_user_session";
+    has_result_set "y";
+    parsed "y";
+}
+
+query "update_user_session"
+{
+  query "UPDATE `user_session` SET `timestamp` =NOW() ,`topic_id`=0, individual_user_id = 0 WHERE `user_id` = '$user_id' and session_id='$session_id'";
+  type "update_user_session";
+  has_result_set "y";
+  parsed "y";
+}
+query "delete_user_session"
+{
+  query "DELETE FROM user_session WHERE timestamp< NOW()-3600  AND topic_id>0";
+  type "delete_user_session";
+  has_result_set "y";
+  parsed "y";
+}
+
+query "update_usage"
+{
+    query "update article_usage_mapping set customer_usage=customer_usage+1 where tid='$taxid' and table_name='tax'";
+    type "update_usage";
+    has_result_set "y";
+    parsed "y";
+}
+
+query "log_usage"
+{
+   query "INSERT INTO `content_history` SET `title` = '???????????(2009?)', `user` = 'Public user', `lawid` = 40283, `taxonomy` = '7252', `provider_cd` = 'LNC', `content_type` = 'cont', `action_type` = 'v', `format` = 'html', `provider_id` = 1, `origin_id` = '40283', `isEnglish` = 'N', `ip` = '10.123.4.211', `time` = NOW(), `profile_id` = 0"; 
+    type "log_usage";
+    has_result_set "y";
+    parsed "y";
+}
+
+//define a query
+query "select_by_ch_eng_counter_id"
+{
+  query "select taxid,title,origin_id,provider_id,isEnglish from tax where ch_eng_counter_id= '$ch_eng_counter_id'";
+// $word will be substitute with the read from the 'word' dictionary
+  type "select_index";
+// query stats will be grouped by type
+  has_result_set "y";
+// the query is expected to return a result set
+  parsed "y";
+// the query string should be first processed by super-smack to do
+// dictionary substitution
+}
+
+query "select_tax"
+{
+  query "select taxid,title,origin_id,provider_id,isEnglish from tax where taxid= '$taxid'";
+  type "select_tax";
+  has_result_set "y";
+  parsed "y";
+}
+
+// define database client type
+client "smacker1"
+{
+ user "smack"; // connect as this user
+ pass "smack123"; // use this password
+ host "10.123.4.212"; // connect to this host
+ db "newlaw"; // switch to this database
+ port "3306";
+ //socket "/var/run/mysqld/mysqld.sock"; // this only applies to MySQL and is
+// ignored for PostgreSQL
+ query_barrel "1 select_user_session 1 update_user_session 1 delete_user_session 1 select_tax 1 update_usage 1 log_usage"; // on each round,
+// run select_by_username query 2 times
+}
+
+main
+ {
+  smacker1.init(); // initialize the client
+  smacker1.set_num_rounds($2); // second arg on the command line defines
+// the number of rounds for each client 
+  smacker1.create_threads($1);
+// first argument on the command line defines how many client instances
+// to fork. Anything after this will be done once for each client until
+// you collect the threads
+  smacker1.connect();
+// you must connect after you fork 
+  smacker1.unload_query_barrel(); // for each client fire the query barrel
+// it will now do the number of rounds specified by set_num_rounds()
+// on each round, query_barrel of the client is executed
+
+  smacker1.collect_threads();
+// the master thread waits for the children, each child reports the stats
+// the stats are printed
+  smacker1.disconnect();
+// the children now disconnect and exit
+ }
+
+
+

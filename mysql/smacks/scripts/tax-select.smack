@@ -1,11 +1,12 @@
 // this is will be used in the table section
 client "admin"
 {
- user "root";
- host "localhost";
- db "newlaw_stg";
- pass "";
- socket "/var/run/mysqld/mysqld.sock"; // this only applies to MySQL and is
+ user "smack";
+ host "10.123.4.211";
+ db "newlaw";
+ pass "smack123";
+ port "3306";
+ //socket "/var/run/mysqld/mysqld.sock"; // this only applies to MySQL and is
 // ignored for PostgreSQL
 }
 
@@ -80,7 +81,7 @@ table "tax"
   KEY `idx_oid_pid_eng` (`origin_id`,`provider_id`,`isEnglish`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1494778 DEFAULT CHARSET=gbk";
   min_rows "90"; // the table must have at least that many rows
-  data_file "words.dat"; // if the table is empty, load the data from
+  data_file "/home/fred/workspace/Benchmark/mysql/smacks/data/words.dat"; // if the table is empty, load the data from
 //this file
   gen_data_file "gen-data -n 90000 -f %12-12s%n,%25-25s,%n,%d";
 // if the file above does not exist, generate it with the above shell command
@@ -94,7 +95,7 @@ dictionary "ch_eng_counter_id"
 {
   type "rand"; // words are retrieved in random order
   source_type "file"; // words come from a file
-  source "ch_eng_counter_id_new.dat"; // file location
+  source "/home/fred/workspace/Benchmark/mysql/smacks/data/ch_eng_counter_id_new.dat"; // file location
   delim ","; // take the part of the line before ,
   file_size_equiv "45000"; // if the file is greater than this
 //divive the real file size by this value obtaining N and take every Nth
@@ -116,16 +117,32 @@ query "select_by_ch_eng_counter_id"
 // dictionary substitution
 }
 
+dictionary "taxid"
+{
+  type "rand"; // words are retrieved in random order
+  source_type "file"; // words come from a file
+  source "/home/fred/workspace/Benchmark/mysql/smacks/data/taxid.dat"; // file location
+  delim ","; // take the part of the line before ,
+  file_size_equiv "45000"; // if the file is greater than this
+}  
+query "select_by_taxid"
+{
+  query "select taxid,title,origin_id,provider_id,isEnglish from tax where taxid= '$taxid'";
+  type "select_index";
+  has_result_set "y";
+  parsed "y";
+}
 // define database client type
 client "smacker1"
 {
- user "root"; // connect as this user
- pass ""; // use this password
- host "localhost"; // connect to this host
- db "newlaw_stg"; // switch to this database
- socket "/var/run/mysqld/mysqld.sock"; // this only applies to MySQL and is
+ user "smack"; // connect as this user
+ pass "smack123"; // use this password
+ host "10.123.4.211"; // connect to this host
+ db "newlaw"; // switch to this database
+ port "3306";
+ //socket "/var/run/mysqld/mysqld.sock"; // this only applies to MySQL and is
 // ignored for PostgreSQL
- query_barrel "2 select_by_ch_eng_counter_id"; // on each round,
+ query_barrel "1 select_by_taxid"; // on each round,
 // run select_by_username query 2 times
 }
 
